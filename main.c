@@ -3,9 +3,8 @@
 int main(int ac, char **av)
 {
     char *s = "hello World !";
-    int i;
+    char *s1 = "hello world !";
 
-    i = ft_write(1, &s[3], 1);
-    printf("%i\n", i);
-    return (0);
+    printf("%zu\n", ft_strlen(s1));
+    return (1);
 }
