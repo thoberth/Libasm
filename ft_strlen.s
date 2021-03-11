@@ -1,4 +1,5 @@
-global _ft_strlen
+segment .text
+	global _ft_strlen
 
 _ft_strlen:
     mov rax, 0          ;rax = 0
