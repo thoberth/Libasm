@@ -24,7 +24,7 @@ void		ft_check_write(void)
 /*void		ft_check_read(void)
 {
 	ssize_t		ret_read;
-	int			fd;	
+	int			fd;
 	char		buf[5000];
 
 	fd = open("ft_write.s", O_RDONLY);

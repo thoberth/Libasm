@@ -19,7 +19,7 @@ HDR = libasm.h
 
 OBJS = $(SRCSASM:.s=.o)
 
-NASM = nasm
+NASM = nasm -I ${HDR}
 
 EXEC = tester
 
@@ -41,7 +41,7 @@ NAME = libasm.a
 all: ${EXEC}
 
 ${EXEC} : ${NAME}
-	${CC} $< ${MAIN} -o $@
+	${CC} ${MAIN} $< -o $@
 
 ${NAME} : ${OBJS}
 	${ARRC} ${OBJS}
