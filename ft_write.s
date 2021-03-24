@@ -12,7 +12,7 @@ ft_write:
 ret_err:
     neg rax                             ; code erreur a mettre en positif
     mov rdi, rax                        ; stockez code erreur dans rdi car rax va prendre l'addresse de errno 
-    call __errno_location WRt ..plt     ; rax = &errno
+    call __errno_location WRT ..plt     ; rax = &errno
     mov [rax], rdi                      ; errno = code erreur
     mov rax, -1                         ; on ret -1 car erreur
     ret

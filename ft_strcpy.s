@@ -9,7 +9,6 @@ ft_strcpy:					;(arg0 = rdi = dst, arg1 = rsi = src)
 	pop rdi
 	mov byte[rdi + rax], 0
 	mov rax, 0
-	jmp copy
 
 copy:
 	cmp byte[rsi + rax], 0

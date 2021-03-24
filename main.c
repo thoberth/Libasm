@@ -45,7 +45,6 @@ void		ft_check_read(void)
 	buf[ret_read] = '\0';
 	printf("|%s|\nreturn : [%zd]\n\n", buf, ret_read);
 	printf("\033[36mresultat : libasm\033[00m\n");
-	ret_read = 0;
 	close(fd);
 	fd = open("ft_write.s", O_RDONLY);
 	ret_read = ft_read(-7, buf, 2000);
@@ -53,7 +52,7 @@ void		ft_check_read(void)
 	printf("|%s|\nreturn : [%zd]\n", buf, ret_read);
 	printf("errno = %d\n", errno);
 	printf("\033[36mresultat : libc\033[00m\n");
-	ret_read = 0;
+	errno = 0;
 	ret_read = read(-7, buf, 2000);
 	buf[ret_read] = '\0';
 	printf("|%s|\nreturn : [%zd]\n\n", buf, ret_read);
@@ -91,10 +90,12 @@ void		ft_check_strcmp(void)
 	printf("return : [%d]\n", ft_strcmp("Hello", "Hello"));
 	printf("\033[36mresultat : libc\033[00m\n");
 	printf("return : [%d]\n\n", strcmp("Hello", "Hello"));
+
 	printf("\033[36mresultat : libasm\033[00m\n");
-	printf("return : [%d]\n", ft_strcmp("abcd", "abce"));
+	printf("return : [%d]\n", ft_strcmp("abcd ", "abce "));
 	printf("\033[36mresultat : libc\033[00m\n");
-	printf("return : [%d]\n\n", strcmp("abcd", "abce"));
+	printf("return : [%d]\n\n", strcmp("abcd ", "abce "));
+
 	printf("\033[36mresultat : libasm\033[00m\n");
 	printf("return : [%d]\n", ft_strcmp(strcmp2, strcmp1));
 	printf("\033[36mresultat : libc\033[00m\n");
@@ -135,7 +136,7 @@ void		ft_check_strcpy(void)
 	printf("return : |%s|\n\n", strcpy(str7, str6));
 }
 
-/*void		ft_check_strdup(void)
+void		ft_check_strdup(void)
 {
 	char	dup[] = "New Malloc";
 	char	dup1[] = "little";
@@ -154,16 +155,19 @@ void		ft_check_strcpy(void)
 	printf("\033[36mresultat : libasm\033[00m\n");
 	printf("return : |%s|\n", ft_strdup(dup2));
 	printf("\033[36mresultat : libc\033[00m\n");
-	printf("return : |%s|\n\n", strdup(dup2));
-}*/
+	printf("return : |%s|\n", strdup(dup2));
+	printf("adresse de la string envoyer : |%p|\n", &dup);
+	printf("l'adresse doit changer ->\n");
+	printf("adresse de la string retourner : |%p|\n\n", ft_strdup(dup));
+}
 
 int			main(void)
 {
-	//ft_check_write();
-	//ft_check_read();
-	//ft_check_strlen();
-	//ft_check_strcpy();
+	ft_check_write();
+	ft_check_read();
+	ft_check_strlen();
+	ft_check_strcpy();
 	ft_check_strcmp();
-	//ft_check_strdup();
+	ft_check_strdup();
 	return (0);
 }	
